@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import com.example.demo.service.AlunoService; 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -30,6 +29,12 @@ public class AlunoController {
     public List<Aluno> listar() {
         return repo.findAll();
     }
+
+    @GetMapping("/{id}")
+    public Aluno getAluno(@PathVariable Integer id) {
+        return repo.findById(id).orElse(null);
+    }
+    
 
     @GetMapping("/{id}/treinos")
     public List<Treino> getMethodName(@PathVariable Integer id) {

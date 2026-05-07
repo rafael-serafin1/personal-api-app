@@ -4,6 +4,7 @@ import java.util.*;
 import com.example.demo.repository.*;
 import com.example.demo.model.Treino;
 import com.example.demo.model.Exercicio;
+import com.example.demo.model.Personal;
 import com.example.demo.dto.TreinoRequest;
 import org.springframework.http.HttpStatus;
 import com.example.demo.service.TreinoService;
@@ -31,6 +32,11 @@ public class TreinoController {
     @GetMapping
     public List<Treino> listar() {
         return repo.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Treino getTreino(@PathVariable Integer id) {
+        return repo.findById(id).orElse(null);
     }
 
     @GetMapping("/{id}/exercicios")

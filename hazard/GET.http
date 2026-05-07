@@ -1,0 +1,7 @@
+# Teste de consulta geral de alunos
+# Apenas para não precisar entrar no localhost toda hora para ver os alunos cadastrados
+GET http://localhost:8080/alunos
+
+# Teste de consulta de um aluno específico
+# Substitua {id} pelo id do aluno que deseja consultar
+GET http://localhost:8080/alunos/{id}

@@ -1,0 +1,12 @@
+# Teste de criação de um aluno
+POST http://localhost:8080/alunos
+Content-Type: application/json
+
+{
+  "idPersonal": 4,
+  "nome": "Pedro Paulo",
+  "dataNascimento": "2008-01-02",
+  "peso": "59.5",
+  "altura": "1.62",
+  "objetivo": "Moggar os betinhas"
+}

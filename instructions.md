@@ -1,1 +1,0 @@
-UTILIZE O COMANDO "./mvnw spring-boot:run" para rodar a aplicação spring-boot

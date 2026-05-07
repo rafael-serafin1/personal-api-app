@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/personais")
@@ -32,6 +34,12 @@ public class PersonalController {
     public List<Personal> listar() {
         return repo.findAll();
     }
+
+    @GetMapping("/{id}")
+    public Personal getPersonal(@PathVariable Integer id) {
+        return repo.findById(id).orElse(null);
+    }
+    
 
     /// Listar alunos de um personal. Não coloque "/personal/" antes de {id} porque já tem no @RequestMapping
     @GetMapping("/{id}/alunos")
