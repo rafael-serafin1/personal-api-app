@@ -13,11 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @RestController
-@RequestMapping("/personal")
+@RequestMapping("/personais")
 public class PersonalController {
     private final PersonalRepository repo;
     private final AlunoRepository alunos;
@@ -34,7 +33,8 @@ public class PersonalController {
         return repo.findAll();
     }
 
-    @GetMapping("/personal/{id}/alunos")
+    /// Listar alunos de um personal. Não coloque "/personal/" antes de {id} porque já tem no @RequestMapping
+    @GetMapping("/{id}/alunos")
     public List<Aluno> listarAlunos(@PathVariable Integer id) {
         return alunos.findByIdPersonal(id);
     }

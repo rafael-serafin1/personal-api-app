@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @RestController
-@RequestMapping("/exercicio")
+@RequestMapping("/exercicios")
 public class ExercicioController {
     private final ExercicioRepository repo;
     private final ExercicioService service;
