@@ -33,3 +33,9 @@ info/
 
 ### VS Code ###
 .vscode/
+
+# setting db instructions
+setdb.c
+
+### additional files to ignore ###
+*.log
