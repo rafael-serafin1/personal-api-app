@@ -1,0 +1,2 @@
+# DELETE request to remove an aluno
+DELETE http://localhost:8080/alunos/7

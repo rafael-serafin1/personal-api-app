@@ -23,4 +23,14 @@ public class TreinoService {
 
         return repository.save(treino);
     }
+
+    public Treino atualizarTreino(Integer id, TreinoRequest request) {
+        return repository.findById(id).map(treino -> {
+            treino.setIdAluno(request.getIdAluno());
+            treino.setNome(request.getNome());
+            treino.setData(request.getDataCriacao());
+            treino.setObs(request.getObservacoes());
+            return repository.save(treino);
+        }).orElse(null);   
+    }
 }

@@ -25,4 +25,21 @@ public class AlunoService {
 
         return repository.save(aluno);
     }
+
+    public Aluno atualizarAluno(Integer id, AlunoRequest request) {
+        return repository.findById(id).map(aluno -> {
+            aluno.setIdPersonal(request.getIdPersonal());
+            aluno.setNome(request.getNome());
+            aluno.setData(request.getDataNascimento());
+            aluno.setPeso(request.getPeso());
+            aluno.setAltura(request.getAltura());
+            aluno.setObjetivo(request.getObjetivo());
+
+            return repository.save(aluno);
+        }).orElse(null);
+    }
+
+    public void deletarAluno(Integer id) {
+        repository.deleteById(id);
+    }
 }

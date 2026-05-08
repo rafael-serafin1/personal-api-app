@@ -23,4 +23,15 @@ public class PersonalService {
 
         return repository.save(personal);
     }
+
+    public Personal atualizarPersonal(Integer id, PersonalRequest request) {
+        Personal personal = repository.findById(id).orElse(null);
+        if (personal == null) return null;
+        
+        personal.setNome(request.getNome());
+        personal.setEmail(request.getEmail());
+        personal.setTelefone(request.getTelefone());
+        personal.setRegistroProf(request.getRegistroProf());
+        return repository.save(personal);
+    }
 }

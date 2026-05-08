@@ -25,6 +25,11 @@ public class AlunoController {
         this.treino = treino;
     }
 
+
+    /**
+     * requisições GET para listar os alunos cadastrados
+     * READ
+     */
     @GetMapping
     public List<Aluno> listar() {
         return repo.findAll();
@@ -41,10 +46,32 @@ public class AlunoController {
         return treino.findByIdAluno(id);
     }
     
-
+    /**
+     * requisições POST para criar um novo aluno
+     * CREATE
+     */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Aluno salvar(@RequestBody AlunoRequest user) {
         return service.criarAluno(user);
-    }   
+    } 
+
+    /**
+     * requisições PUT para atualizar um aluno existente
+     * UPDATE
+     */
+    @PutMapping("/{id}")
+    public Aluno atualizar(@PathVariable Integer id, @RequestBody AlunoRequest user) {
+        return service.atualizarAluno(id, user);
+    }
+
+    /**
+     * requisições DELETE para remover um aluno
+     * DELETE
+     */
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deletar(@PathVariable Integer id) {
+        service.deletarAluno(id);
+    }
 }

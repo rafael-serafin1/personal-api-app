@@ -26,4 +26,17 @@ public class ExercicioService {
 
         return repository.save(exercicio);
     }
+
+    public Exercicio atualizarExercicio(Integer id, ExercicioRequest request) {
+        return repository.findById(id).map(exercicio -> {
+            exercicio.setIdTreino(request.getIdTreino());
+            exercicio.setNome(request.getNome());
+            exercicio.setSeries(request.getSeries());
+            exercicio.setRepeticoes(request.getRepeticoes());
+            exercicio.setCarga(request.getCarga());
+            exercicio.setDescanso(request.getDescanso());
+            exercicio.setOrdem(request.getOrdem());
+            return repository.save(exercicio);
+        }).orElse(null);
+    }
 }

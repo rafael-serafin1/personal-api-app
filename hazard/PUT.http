@@ -1,0 +1,12 @@
+# This is a sample HTTP request for updating an existing resource (in this case, an "aluno") using the PUT method. The request includes the URL of the resource to be updated, the content type of the request body, and the JSON payload containing the updated information for the "aluno".
+PUT http://localhost:8080/alunos/6
+Content-Type: application/json
+
+{
+    "idPersonal": 7,
+    "nome": "Alex Silva",
+    "data": "2000-04-15",
+    "peso": 99.75,
+    "altura": 1.7,
+    "objetivo": "Emagrecer"
+}
