@@ -1,10 +1,14 @@
 package com.example.demo.dto;
 
 import java.sql.Date;
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class AlunoRequest {
     private Integer idPersonal;
     private String nome;
+    @JsonAlias({"data", "dataNascimento"})
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date dataNascimento;
     private Double peso;
     private Double altura;

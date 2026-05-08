@@ -49,7 +49,15 @@ public class AlunoService {
         return repository.findById(id).map(aluno -> {
             if (updates.containsKey("idPersonal")) aluno.setIdPersonal((Integer) updates.get("idPersonal"));
             if (updates.containsKey("nome")) aluno.setNome((String) updates.get("nome"));
-            if (updates.containsKey("dataNascimento")) aluno.setData((Date) updates.get("dataNascimento"));
+
+            if (updates.containsKey("dataNascimento") || updates.containsKey("data")) {
+                Object rawData = updates.containsKey("dataNascimento") ? updates.get("dataNascimento") : updates.get("data");
+                if (rawData instanceof Date)
+                    aluno.setData((Date) rawData);
+                else if (rawData instanceof String) 
+                    aluno.setData(Date.valueOf((String) rawData));
+            }
+
             if (updates.containsKey("peso")) aluno.setPeso((Double) updates.get("peso"));
             if (updates.containsKey("altura")) aluno.setAltura((Double) updates.get("altura"));
             if (updates.containsKey("objetivo")) aluno.setObjetivo((String) updates.get("objetivo"));
