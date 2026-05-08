@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.sql.Date;
+import java.util.Map;
 import com.example.demo.model.Aluno;
 import com.example.demo.dto.AlunoRequest;
 import org.springframework.stereotype.Service;
@@ -41,5 +43,18 @@ public class AlunoService {
 
     public void deletarAluno(Integer id) {
         repository.deleteById(id);
+    }
+
+    public Aluno atualizarParcialmenteAluno(Integer id, Map<String, Object> updates) {
+        return repository.findById(id).map(aluno -> {
+            if (updates.containsKey("idPersonal")) aluno.setIdPersonal((Integer) updates.get("idPersonal"));
+            if (updates.containsKey("nome")) aluno.setNome((String) updates.get("nome"));
+            if (updates.containsKey("dataNascimento")) aluno.setData((Date) updates.get("dataNascimento"));
+            if (updates.containsKey("peso")) aluno.setPeso((Double) updates.get("peso"));
+            if (updates.containsKey("altura")) aluno.setAltura((Double) updates.get("altura"));
+            if (updates.containsKey("objetivo")) aluno.setObjetivo((String) updates.get("objetivo"));
+
+            return repository.save(aluno);
+        }).orElse(null);
     }
 }

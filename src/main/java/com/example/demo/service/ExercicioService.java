@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.util.Map;
 import com.example.demo.model.Exercicio;
 import com.example.demo.dto.ExercicioRequest;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,19 @@ public class ExercicioService {
             exercicio.setCarga(request.getCarga());
             exercicio.setDescanso(request.getDescanso());
             exercicio.setOrdem(request.getOrdem());
+            return repository.save(exercicio);
+        }).orElse(null);
+    }
+
+    public Exercicio atualizarParcialmente(Integer id, Map<String, Object> updates) {
+        return repository.findById(id).map(exercicio -> {
+            if (updates.containsKey("idTreino")) exercicio.setIdTreino((Integer) updates.get("idTreino"));
+            if (updates.containsKey("nome")) exercicio.setNome((String) updates.get("nome"));
+            if (updates.containsKey("series")) exercicio.setSeries((Integer) updates.get("series"));
+            if (updates.containsKey("repeticoes")) exercicio.setRepeticoes((String) updates.get("repeticoes"));
+            if (updates.containsKey("carga")) exercicio.setCarga((String) updates.get("carga"));
+            if (updates.containsKey("descanso")) exercicio.setDescanso((String) updates.get("descanso"));
+            if (updates.containsKey("ordem")) exercicio.setOrdem((Integer) updates.get("ordem"));
             return repository.save(exercicio);
         }).orElse(null);
     }

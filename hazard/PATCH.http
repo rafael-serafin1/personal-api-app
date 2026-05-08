@@ -1,0 +1,6 @@
+PATCH http://localhost:8080/alunos/6
+Content-Type: application/json
+
+{
+    "data": "1990-01-01"
+}

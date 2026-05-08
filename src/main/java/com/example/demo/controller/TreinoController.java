@@ -53,4 +53,9 @@ public class TreinoController {
     public void deletar(@PathVariable Integer id) {
         repo.deleteById(id);
     }
+
+    @PatchMapping("/{id}")
+    public Treino atualizarParcial(@PathVariable Integer id, @RequestBody Map<String, Object> updates) {
+        return service.atualizarParcialmente(id, updates);
+    }
 }

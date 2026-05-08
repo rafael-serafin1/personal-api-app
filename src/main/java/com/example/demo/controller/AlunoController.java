@@ -28,7 +28,7 @@ public class AlunoController {
 
     /**
      * requisições GET para listar os alunos cadastrados
-     * READ
+     * ? READ
      */
     @GetMapping
     public List<Aluno> listar() {
@@ -48,7 +48,7 @@ public class AlunoController {
     
     /**
      * requisições POST para criar um novo aluno
-     * CREATE
+     * ? CREATE
      */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -58,7 +58,7 @@ public class AlunoController {
 
     /**
      * requisições PUT para atualizar um aluno existente
-     * UPDATE
+     * ? UPDATE
      */
     @PutMapping("/{id}")
     public Aluno atualizar(@PathVariable Integer id, @RequestBody AlunoRequest user) {
@@ -67,11 +67,21 @@ public class AlunoController {
 
     /**
      * requisições DELETE para remover um aluno
-     * DELETE
+     * ? DELETE
      */
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletar(@PathVariable Integer id) {
         service.deletarAluno(id);
+    }
+
+
+    /**
+     * requisição extra: PATCH para atualizar parcialmente um aluno existente
+     * ? UPDATE 2: the return
+     */
+    @PatchMapping("/{id}")
+    public Aluno atualizarParcialmente(@PathVariable Integer id, @RequestBody Map<String, Object> updates) {
+        return service.atualizarParcialmenteAluno(id, updates);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.util.Map;
 import com.example.demo.model.Personal;
 import com.example.demo.dto.PersonalRequest;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,18 @@ public class PersonalService {
         personal.setEmail(request.getEmail());
         personal.setTelefone(request.getTelefone());
         personal.setRegistroProf(request.getRegistroProf());
+        return repository.save(personal);
+    }
+
+    public Personal atualizarParcialmente(Integer id, Map<String, Object> updates) {
+        Personal personal = repository.findById(id).orElse(null);
+        if (personal == null) return null;
+
+        if (updates.containsKey("nome")) personal.setNome((String) updates.get("nome"));
+        if (updates.containsKey("email")) personal.setEmail((String) updates.get("email"));
+        if (updates.containsKey("telefone")) personal.setTelefone((String) updates.get("telefone"));
+        if (updates.containsKey("registroProf")) personal.setRegistroProf((String) updates.get("registroProf"));
+
         return repository.save(personal);
     }
 }

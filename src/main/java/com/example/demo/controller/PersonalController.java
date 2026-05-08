@@ -58,4 +58,9 @@ public class PersonalController {
     public void deletar(@PathVariable Integer id) {
         repo.deleteById(id);
     }
+
+    @PatchMapping("/{id}")
+    public Personal atualizarParcialmente(@PathVariable Integer id, @RequestBody Map<String, Object> updates) {
+        return service.atualizarParcialmente(id, updates);
+    }
 }

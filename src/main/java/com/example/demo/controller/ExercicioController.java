@@ -45,4 +45,9 @@ public class ExercicioController {
     public void deletar(@PathVariable Integer id) {
         repo.deleteById(id);
     }
+
+    @PatchMapping("/{id}")
+    public Exercicio atualizarParcial(@PathVariable Integer id, @RequestBody Map<String, Object> updates) {
+        return service.atualizarParcialmente(id, updates);
+    }
 }
