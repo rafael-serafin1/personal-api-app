@@ -2,5 +2,6 @@ PATCH http://localhost:8080/alunos/6
 Content-Type: application/json
 
 {
+    "id_aluno": 6,
     "data": "1990-01-01"
 }
